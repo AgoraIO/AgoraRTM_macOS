@@ -8,10 +8,8 @@ on:
 
 jobs:
   build:
-
     runs-on: macos-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Build Generic
-      run: xcodebuild -scheme AgoraRtmKit -destination generic/platform=iOS -destination "generic/platform=iOS Simulator"
+      run: xcodebuild -scheme AgoraRtmKit -destination platform=macOS
