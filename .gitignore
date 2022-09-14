@@ -6,4 +6,5 @@
 xcuserdata/
 xcshareddata/
 *.xcframework
+*.framework
 *.xcframework.zip
