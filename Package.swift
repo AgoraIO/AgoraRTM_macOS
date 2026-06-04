@@ -1,24 +1,29 @@
 // swift-tools-version:5.3
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
 import PackageDescription
 
 let package = Package(
-    name: "AgoraRtmKit",
-    defaultLocalization: "en",
+    name: "AgoraRTM",
     platforms: [.macOS(.v10_10)],
     products: [
         .library(
-            name: "AgoraRtmKit",
-            targets: ["AgoraRtmKit"]
+            name: "AgoraRTM",
+            targets: ["AgoraRtmKit", "AgoraRtmInfra_macOS"]
         ),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/AgoraIO/AgoraInfra_macOS.git", from: "1.3.0")
     ],
     targets: [
         .binaryTarget(
             name: "AgoraRtmKit",
-            url: "https://github.com/AgoraIO/AgoraRtm_macOS/releases/download/1.5.1/AgoraRtmKit.xcframework.zip",
-            checksum: "3c209b9ad1bbfab850a10edc2d8d0559aef0d07d171dd9b9c954542d8b8dd32d"
+            url: "https://download.agora.io/rtm2/release/AgoraRtmKit.xcframework_2.2.8_macOS.zip",
+            checksum: "db5081eefbb927a4ef8a953fcf44cf87a09731c3b4501c117539128fd2c638c7"
+        ),
+        .target(
+            name: "AgoraRtmInfra_macOS",
+            dependencies: [
+                .product(name: "AgoraInfra_macOS", package: "AgoraInfra_macOS")
+            ]
         )
-//        .binaryTarget(name: "AgoraRtmKit", path: "./AgoraRtmKit.xcframework")
     ]
 )
